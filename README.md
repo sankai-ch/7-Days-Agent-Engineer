@@ -89,13 +89,6 @@ Java 版 Day1 可运行脚手架，包含：
 - JDK 17+
 - Maven 3.9+
 
-## 运行
-
-```bash
-cd /Users/sankai/Documents/obsidian/everything/AI学习/7-Days-Agent-Engineer
-mvn spring-boot:run
-```
-
 接口：
 - `GET /health`
 - `POST /v1/extract`
