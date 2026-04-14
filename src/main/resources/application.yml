@@ -1,0 +1,59 @@
+dashscope:
+  api-key:
+  embedding-model: text-embedding-v3
+  chat-model: qwen-plus
+  base-url:
+
+spring:
+  datasource:
+    url:
+    username:
+    password:
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      max-lifetime: 1800000
+      connection-timeout: 30000
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+
+rag:
+  knowledge:
+    path:
+    classpath-pattern:
+  retrieval:
+    top-k: 3
+
+# =====================================================
+# Day 3：MCP Server 配置
+# =====================================================
+mcp:
+  server:
+    name: agent-mcp-server               # MCP 服务器名称
+    version: 1.0.0                        # MCP 服务器版本号
+    auth-token:
+
+# =====================================================
+# Day 3：Agent 配置
+# =====================================================
+agent:
+  max-tool-rounds: 3                      # Agent 单次对话最大工具调用轮次
+
+resilience4j:
+  retry:
+    instances:
+      embedding:
+        max-attempts: 3
+        wait-duration: 500ms
+        retry-exceptions:
+          - java.io.IOException
+          - java.util.concurrent.TimeoutException
