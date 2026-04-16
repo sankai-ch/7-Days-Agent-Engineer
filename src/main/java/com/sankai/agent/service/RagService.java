@@ -3,6 +3,7 @@ package com.sankai.agent.service;
 import com.sankai.agent.model.AskResponse;
 import com.sankai.agent.model.Citation;
 import dev.langchain4j.community.model.dashscope.QwenChatModel;
+import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.data.message.SystemMessage;
 import dev.langchain4j.data.message.UserMessage;
 import org.springframework.stereotype.Service;

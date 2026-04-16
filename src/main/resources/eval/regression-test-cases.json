@@ -1,0 +1,92 @@
+[
+  {
+    "id": "TC-001",
+    "category": "log_query",
+    "mode": "agent",
+    "input": "最近有什么 ERROR 级别的日志？",
+    "expectedToolCalls": ["query_logs"],
+    "expectedKeywords": ["ERROR"],
+    "description": "单 Agent 查询 ERROR 日志"
+  },
+  {
+    "id": "TC-002",
+    "category": "ticket_query",
+    "mode": "agent",
+    "input": "有哪些高优先级的未解决工单？",
+    "expectedToolCalls": ["query_tickets"],
+    "expectedKeywords": ["工单"],
+    "description": "单 Agent 查询高优工单"
+  },
+  {
+    "id": "TC-003",
+    "category": "ticket_query",
+    "mode": "agent",
+    "input": "张三负责的工单有哪些？",
+    "expectedToolCalls": ["query_tickets"],
+    "expectedKeywords": ["张三"],
+    "description": "单 Agent 按负责人查工单"
+  },
+  {
+    "id": "TC-004",
+    "category": "log_query",
+    "mode": "agent",
+    "input": "order-service 最近有什么告警？",
+    "expectedToolCalls": ["query_logs"],
+    "expectedKeywords": ["order"],
+    "description": "单 Agent 按服务名查日志"
+  },
+  {
+    "id": "TC-005",
+    "category": "chat",
+    "mode": "agent",
+    "input": "你好，你是谁？",
+    "expectedToolCalls": [],
+    "expectedKeywords": [],
+    "description": "单 Agent 闲聊（不应调用工具）"
+  },
+  {
+    "id": "TC-006",
+    "category": "mixed",
+    "mode": "orchestrate",
+    "input": "分析系统当前的健康状况，包括错误日志和未解决的高优工单",
+    "expectedToolCalls": ["query_logs", "query_tickets"],
+    "expectedKeywords": ["日志", "工单"],
+    "description": "编排模式多工具综合分析"
+  },
+  {
+    "id": "TC-007",
+    "category": "mixed",
+    "mode": "orchestrate",
+    "input": "帮我查一下张三负责的工单情况，以及最近有没有相关的错误日志",
+    "expectedToolCalls": ["query_tickets", "query_logs"],
+    "expectedKeywords": ["张三"],
+    "description": "编排模式交叉查询"
+  },
+  {
+    "id": "TC-008",
+    "category": "ticket_query",
+    "mode": "orchestrate",
+    "input": "目前有哪些紧急工单？给我列出来并分析优先级",
+    "expectedToolCalls": ["query_tickets"],
+    "expectedKeywords": ["工单"],
+    "description": "编排模式工单分析"
+  },
+  {
+    "id": "TC-009",
+    "category": "log_query",
+    "mode": "orchestrate",
+    "input": "查一下 gateway 和 user-service 最近的警告和错误日志",
+    "expectedToolCalls": ["query_logs"],
+    "expectedKeywords": ["日志"],
+    "description": "编排模式多服务日志查询"
+  },
+  {
+    "id": "TC-010",
+    "category": "db_query",
+    "mode": "agent",
+    "input": "知识库里有没有关于 Spring Boot 的内容？",
+    "expectedToolCalls": ["query_database"],
+    "expectedKeywords": [],
+    "description": "单 Agent 知识库查询"
+  }
+]
