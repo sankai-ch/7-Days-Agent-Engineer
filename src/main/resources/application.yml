@@ -13,7 +13,7 @@ spring:
     hikari:
       maximum-pool-size: 20
       minimum-idle: 5
-      max-lifetime: 1800000
+      max-lifetime: 600000
       connection-timeout: 30000
   jpa:
     hibernate:
@@ -28,8 +28,8 @@ spring:
 
 rag:
   knowledge:
-    path:
-    classpath-pattern:
+    path: /Users/sankai/Library/Mobile Documents/iCloud~md~obsidian/Documents/everything/Java/面试题
+    classpath-pattern: classpath:knowledge/*.md
   retrieval:
     top-k: 3
 
@@ -40,13 +40,19 @@ mcp:
   server:
     name: agent-mcp-server               # MCP 服务器名称
     version: 1.0.0                        # MCP 服务器版本号
-    auth-token:
+    auth-token: mcp-day3-token-2024       # 鉴权 Token（留空则跳过鉴权）
 
 # =====================================================
-# Day 3：Agent 配置
+# Day 3：Agent 配置（单 Agent 模式）
 # =====================================================
 agent:
   max-tool-rounds: 3                      # Agent 单次对话最大工具调用轮次
+
+# =====================================================
+# Day 4：编排流水线配置（三角色协作模式）
+# =====================================================
+orchestration:
+  max-supplement-rounds: 1                # Reviewer 要求补充时最多允许几轮补充执行
 
 resilience4j:
   retry:
