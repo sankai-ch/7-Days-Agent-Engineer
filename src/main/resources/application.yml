@@ -54,6 +54,27 @@ agent:
 orchestration:
   max-supplement-rounds: 1                # Reviewer 要求补充时最多允许几轮补充执行
 
+# =====================================================
+# Day 5：可观测与评测配置
+# =====================================================
+observability:
+  trace-buffer-size: 200                  # 内存中保留最近多少条 Trace
+  cost:
+    input-price-per-1k: 0.0008            # 输入价格：元/千token（qwen-plus）
+    output-price-per-1k: 0.002            # 输出价格：元/千token（qwen-plus）
+
+# =====================================================
+# Day 6：安全与稳定性配置
+# =====================================================
+security:
+  rate-limit:
+    max-requests-per-minute: 30           # 每分钟最大请求数（每 IP）
+  circuit-breaker:
+    failure-threshold: 5                  # 连续失败几次后触发熔断
+    cooldown-ms: 30000                    # 熔断冷却时间（毫秒）
+  idempotency:
+    cache-ttl-ms: 60000                   # 幂等缓存过期时间（毫秒）
+
 resilience4j:
   retry:
     instances:
